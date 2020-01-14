@@ -12,18 +12,43 @@
 
 
 #
-# Author:  Hans.Botha@appdynamics.com
+# Author:  Paul.Mateos@appdynamics.com
 #
 # To configure:  Supply the correct API Account detail.
 # 
-GLOBAL_ACCOUNT="customer1_e6e9c99c-938b-47ec-8384-ed85a540ff84"
-API_KEY="93515053-8dd5-4bf6-a278-aec3ef3ed02c"
-controllerURL="http://enterpriseconsolep-vhpaulmateos-hmpczlps.srv.ravcloud.com"
 
-curl -v -k -X DELETE "$controllerURL:9080/events/schema/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$GLOBAL_ACCOUNT" -H"X-Events-API-Key:$API_KEY"
+
+#refer to config file
+. ./controller.config
+
+if [ $# -gt 0 ]; then
+   env=$1
+else
+   echo "Usage ./auditSnapshots.sh <env> <tenant> <duration> <snapshot-type>"
+   exit
+fi
+ 
+if [ "$env" == "Prod" ]; then
+  controllerURL=$Prod_controllerURL
+  GLOBAL_ACCOUNT=$Prod_API_ACCOUNT             # Controller Global Account Name
+  API_KEY=$Prod_API_KEY
+  ProxyServer=$Prod_ProxyServer
+  ProxyPort=$Prod_ProxyPort
+elif [ "$env" == "Test" ]; then
+  controllerURL=$Test_controllerURL
+  GLOBAL_ACCOUNT=$Test_API_ACCOUNT             # Controller Global Account Name
+  API_KEY=$Test_API_KEY
+  ProxyServer=$Test_ProxyServer
+  ProxyPort=$Test_ProxyPort
+else
+  echo "Invalid environment specified"
+  exit
+fi
+# Delete existing schema
+curl -v -k -X DELETE --proxy $ProxyHost:$ProxyPort "$controllerURL:9080/events/schema/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$GLOBAL_ACCOUNT" -H"X-Events-API-Key:$API_KEY"
 
 # Wait for the schema to disappear. 
 sleep 30
- 
-#curl -k --proxy PROXY_HOST:PORT -X POST "$URL/schema/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$API_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "{\"schema\" : { \"AuditTime\": \"string\", \"Environment\": \"string\", \"Tenant\": \"string\", \"SnapshotType\": \"string\", \"Status\": \"string\", \"Description\": \"string\", \"SampleData\": \"string\"} }"
-curl -v -k -X POST "$controllerURL:9080/events/schema/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$GLOBAL_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "{\"schema\" : { \"AuditTime\": \"string\", \"Environment\": \"string\", \"Tenant\": \"string\", \"SnapshotType\": \"string\", \"Status\": \"string\", \"Description\": \"string\", \"SampleData\": \"string\"} }"
+
+#Create new schema 
+curl -v -k -X POST --proxy $ProxyHost:$ProxyPort "$controllerURL:9080/events/schema/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$GLOBAL_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "{\"schema\" : { \"AuditTime\": \"string\", \"Environment\": \"string\", \"Tenant\": \"string\", \"SnapshotType\": \"string\", \"Status\": \"string\", \"Description\": \"string\", \"SampleData\": \"string\"} }"

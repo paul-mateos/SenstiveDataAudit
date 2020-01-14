@@ -12,7 +12,7 @@
 
 
 #
-# Author:  Hans.Botha@appdynamics.com
+# Author:  Paul.Mateos@appdynamics.com
 #
 # To configure:  Supply the correct paths, URL's and Base64 connect string.
 # 
@@ -21,8 +21,11 @@ export AUDITHOME=`pwd`
 echo $AUDITHOME
 cookieFile=$AUDITHOME'/out/audit/cookies/cookie.appd.'$$
 filter=$AUDITHOME'/out/audit/config/sensitiveFilters.config'
-analyticsURL='https://analytics.api.appdynamics.com/events/query'
-URL="https://analytics.api.appdynamics.com/events"
+#refer to config file
+. ./controller.config
+
+analyticsURL=$queryURL
+URL=$eventsURL
 
 if [ $# -gt 0 ]; then
    env=$1
@@ -32,21 +35,22 @@ else
 fi
  
 if [ "$env" == "Prod" ]; then
-    controllerURL="https://ddddd.saas.appdynamics.com/controller"
-    hashedCredentials='xxxxxkOmNva2UxMjM='
-    API_ACCOUNT="xxxxxf-45f9-8f1f-20875e4ac32f"                                  # Controller Global Account Name
-    API_KEY="xxxxx5db00368c50" 
-    ProxyServer='XXXX'
-    ProxyPort='XXXX'
-else
-  if [ "$env" == "Test" ]; then
-    controllerURL="https://XXXXX-test.saas.appdynamics.com/controller"
-    hashedCredentials='XXXXXXXXXX'      # Controller Access
-    AccountName='XXXXXXXX'              # Controller Global Account Name
-    API_KEY='XXXXXXXX'                  # Custom events API Key with Schema Update permissions
-  else
-    echo "Invalid environment specified"
-    exit
+  controllerURL=$Prod_controllerURL 
+  hashedCredentials=$Prod_hashedCredentials
+  API_ACCOUNT=$Prod_API_ACCOUNT             # Controller Global Account Name
+  API_KEY=$Prod_API_KEY 
+  ProxyServer=$Prod_ProxyServer
+  ProxyPort=$Prod_ProxyPort
+elif [ "$env" == "Test" ]; then
+  controllerURL=$Test_controllerURL
+  hashedCredentials=$Teset_hashedCredentials
+  API_ACCOUNT=$Test_API_ACCOUNT             # Controller Global Account Name
+  API_KEY=$Test_API_KEY 
+  ProxyServer=$Test_ProxyServer
+  ProxyPort=$Test_ProxyPort
+else 
+  echo "Invalid environment specified"
+  exit
   fi
 fi
  
@@ -69,24 +73,8 @@ do
   echo $entriesFound
  
   #  Publish results to Analytics Custom Schema
-  URL="https://analytics.api.appdynamics.com/events"
-   if [[ $1 == "Prod" ]]; then
-
-    AccountName="xxxxxf"                                  # Controller Global Account Name
-    API_KEY="1xxxxx68c50" 
-     
-
-  else
-
-     AccountName="XXXXXX"
-
-     API_KEY="XXXXXX"
-
-  fi
-
   NOW=`date +"%Y-%m-%d : %T"`
 
- 
   if [[ $entriesFound -eq 0 ]]; then
      Status="Comply"
      Description="Healthy"

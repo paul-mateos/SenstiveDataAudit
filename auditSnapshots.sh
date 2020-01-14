@@ -23,8 +23,12 @@ export AUDITHOME=`pwd`
 echo $AUDITHOME
 cookieFile=$AUDITHOME'/out/audit/cookies/cookie.appd.'$$
 filter=$AUDITHOME'/out/audit/config/sensitiveFilters.config'
-analyticsURL='http://enterpriseconsolep-vhpaulmateos-hmpczlps.srv.ravcloud.com:9080/events/query'
-URL="http://enterpriseconsolep-vhpaulmateos-hmpczlps.srv.ravcloud.com:9080/events"
+
+#refer to config file
+. ./controller.config
+
+analyticsURL=$queryURL
+URL=$eventsURL
 
 if [ $# -gt 0 ]; then
    env=$1
@@ -34,24 +38,22 @@ else
 fi
  
 if [ "$env" == "Prod" ]; then
-    controllerURL="https://xxxxx.saas.appdynamics.com/controller"
-    hashedCredentials='xxxxUxMjM='
-    API_ACCOUNT="xxxxxx-45f9-8f1f-20875e4ac32f"                                  # Controller Global Account Name
-    API_KEY="xxxxxxx00368c50"
-    #ProxyHost='XXXXXXXXXXXXX'
-    #ProxyPort='XXXX'
+  controllerURL=$Prod_controllerURL 
+  hashedCredentials=$Prod_hashedCredentials
+  API_ACCOUNT=$Prod_API_ACCOUNT             # Controller Global Account Name
+  API_KEY=$Prod_API_KEY 
+  ProxyServer=$Prod_ProxyServer
+  ProxyPort=$Prod_ProxyPort
+elif [ "$env" == "Test" ]; then
+  controllerURL=$Test_controllerURL
+  hashedCredentials=$Teset_hashedCredentials
+  API_ACCOUNT=$Test_API_ACCOUNT             # Controller Global Account Name
+  API_KEY=$Test_API_KEY 
+  ProxyServer=$Test_ProxyServer
+  ProxyPort=$Test_ProxyPort  
 else
- if [ "$env" == "Test" ]; then
-    controllerURL="http://enterpriseconsolep-vhpaulmateos-hmpczlps.srv.ravcloud.com:8090/controller"
-    hashedCredentials='YWRtaW5AY3VzdG9tZXIxOmFwcGQ'
-    ProxyHost=''
-    ProxyPort=
-    API_ACCOUNT="customer1_e6e9c99c-938b-47ec-8384-ed85a540ff84"               # Controller Global Account
-    API_KEY="93515053-8dd5-4bf6-a278-aec3ef3ed02c"                    # Custom Event Service Key with Schema update permissions
-  else
-    echo "Invalid environment specified"
-    exit
-  fi
+  echo "Invalid environment specified"
+  exit
 fi
  
 if [ $# -gt 1 ]; then

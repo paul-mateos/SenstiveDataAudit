@@ -18,33 +18,37 @@ export AUDITHOME=`pwd`
 echo $AUDITHOME
 cookieFile=$AUDITHOME'/out/audit/cookies/cookie.appd.'$$
 filter=$AUDITHOME'/out/audit/config/sensitiveFilters.config'
- 
+
+#refer to config file
+. ./controller.config
+
 if [ $# -gt 0 ]; then
    env=$1
 else
    echo "Usage ./listApps.sh <env>"
    exit
 fi
- 
+
 if [ "$env" == "Prod" ]; then
-    controllerURL="https://xxxx.saas.appdynamics.com/controller"
-    hashedCredentials='xxxx'
-    API_ACCOUNT="xxx-45f9-8f1f-20875e4ac32f"                                  # Controller Global Account Name
-    API_KEY="xxxx-7d7-4dca-9abc-75db00368c50" 
-    #ProxyServer='XXXX'
-    #ProxyPort='XXXX'
+  controllerURL=$Prod_controllerURL 
+  hashedCredentials=$Prod_hashedCredentials
+  API_ACCOUNT=$Prod_API_ACCOUNT             # Controller Global Account Name
+  API_KEY=$Prod_API_KEY 
+  ProxyServer=$Prod_ProxyServer
+  ProxyPort=$Prod_ProxyPort
+elif [ "$env" == "Test" ]; then
+  controllerURL=$Test_controllerURL
+  hashedCredentials=$Teset_hashedCredentials
+  API_ACCOUNT=$Test_API_ACCOUNT             # Controller Global Account Name
+  API_KEY=$Test_API_KEY 
+  ProxyServer=$Test_ProxyServer
+  ProxyPort=$Test_ProxyPort  
 else
-  if [ "$env" == "Test" ]; then
-    controllerURL="http://enterpriseconsolep-vhpaulmateos-hmpczlps.srv.ravcloud.com:8090/controller"
-    hashedCredentials='YWRtaW5AY3VzdG9tZXIxOmFwcGQ='
-    ProxyHost=''
-    ProxyPort=''
-  else
-    echo "Invalid environment specified"
-    exit
-  fi
+  echo "Invalid environment specified"
+  exit
 fi
- 
+
+
 if [ $# -gt 1 ]; then
   report="1"
 else
@@ -65,6 +69,7 @@ xmltag2=name;                               # Business Application Name
 xmltag3=internalName;                       # Business Transaction Name
  
 #configure all your connection details
+echo $controllerURL
  curl -v -c $cookieFile --proxy $ProxyHost:$ProxyPort --header "Authorization: Basic ${hashedCredentials}" $controllerURL/auth?action=login
  echo "Cookiefile:"$cookieFile
  X_CSRF_TOKEN="$(grep X-CSRF-TOKEN $cookieFile|rev|cut -d$'\t' -f1|rev)"
@@ -74,8 +79,7 @@ xmltag3=internalName;                       # Business Transaction Name
  #
  #Once your cookie is available, please look at these two examples to extract Events and Problems (Health Rules that raised alerts)
  #
-# echo "################ List Apps ###############"
-# echo "CookieFile:"$cookieFile
+
  curl -v -i -b $cookieFile --proxy $ProxyHost:$ProxyPort -H "$X_CSRF_TOKEN_HEADER" "$controllerURL/rest/applications" |sed -n '/<'"${xmltag1}"'>/,/<\/'"$xmltag2"'>/ {
  s/^.*<'"$xmltag1"'>//
  s/<\/'"$xmltag1"'>.*$//
