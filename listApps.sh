@@ -38,7 +38,7 @@ if [ "$env" == "Prod" ]; then
   ProxyPort=$Prod_ProxyPort
 elif [ "$env" == "Test" ]; then
   controllerURL=$Test_controllerURL
-  hashedCredentials=$Teset_hashedCredentials
+  hashedCredentials=$Test_hashedCredentials
   API_ACCOUNT=$Test_API_ACCOUNT             # Controller Global Account Name
   API_KEY=$Test_API_KEY 
   ProxyServer=$Test_ProxyServer
@@ -69,9 +69,8 @@ xmltag2=name;                               # Business Application Name
 xmltag3=internalName;                       # Business Transaction Name
  
 #configure all your connection details
-echo $controllerURL
  curl -v -c $cookieFile --proxy $ProxyHost:$ProxyPort --header "Authorization: Basic ${hashedCredentials}" $controllerURL/auth?action=login
- echo "Cookiefile:"$cookieFile
+ echo "###################Cookiefile:"$cookieFile
  X_CSRF_TOKEN="$(grep X-CSRF-TOKEN $cookieFile|rev|cut -d$'\t' -f1|rev)"
  echo "Token:"$X_CSRF_TOKEN
  X_CSRF_TOKEN_HEADER="`if [ -n "$X_CSRF_TOKEN" ]; then echo "X-CSRF-TOKEN:$X_CSRF_TOKEN"; else echo ''; fi`"

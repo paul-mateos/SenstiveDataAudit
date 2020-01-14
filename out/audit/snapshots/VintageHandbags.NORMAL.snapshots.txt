@@ -1,1 +1,901 @@
-<request-segment-datas></request-segment-datas>
+<request-segment-datas><request-segment-data>
+  <id>0</id>
+  <archived>false</archived>
+  <requestGUID>a6846219-d003-4ec9-ab79-e31b10735c15</requestGUID>
+  <businessTransactionId>225</businessTransactionId>
+  <applicationId>10</applicationId>
+  <applicationComponentId>16</applicationComponentId>
+  <applicationComponentNodeId>300</applicationComponentNodeId>
+  <async>false</async>
+  <threadID>57</threadID>
+  <threadName>http-nio-8080-exec-6</threadName>
+  <localStartTime>1578970146020</localStartTime>
+  <serverStartTime>1578970146020</serverStartTime>
+  <firstInChain>true</firstInChain>
+  <callChain>Component:16</callChain>
+  <localID>0</localID>
+  <errorOccured>false</errorOccured>
+  <hasDeepDiveData>true</hasDeepDiveData>
+  <userExperience>NORMAL</userExperience>
+  <timeTakenInMilliSecs>162</timeTakenInMilliSecs>
+  <cpuTimeTakenInMilliSecs>79</cpuTimeTakenInMilliSecs>
+  <warningThreshold>2335 ms. Average response time [2135.0] (minimum baseline: 200 ms) over last 0 minutes. Standard deviation unavailable in first 30 minutes.</warningThreshold>
+  <criticalThreshold>2735 ms. Average response time [2135.0] (minimum baseline: 600 ms) over last 0 minutes. Standard deviation unavailable in first 30 minutes.</criticalThreshold>
+  <summary>Scheduled Snapshots: one every 10 minutes. </summary>
+  <errorSummary></errorSummary>
+  <diagnosticSessionGUID></diagnosticSessionGUID>
+  <deepDivePolicy>TIME_SAMPLING</deepDivePolicy>
+  <delayedDeepDive>false</delayedDeepDive>
+  <delayedDeepDiveOffSet>0</delayedDeepDiveOffSet>
+  <stallDump></stallDump>
+  <snapshotExitSequence></snapshotExitSequence>
+  <snapshotExitCalls>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>Asynchronous activity identified</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970146060</value>
+        </name-value>
+      </properties>
+      <toComponentId>16</toComponentId>
+      <timeTakenInMillis>0</timeTakenInMillis>
+      <count>1</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>30</snapshotSequenceCounter>
+      <callingMethod>org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod:840</callingMethod>
+      <exitPointName>ASYNC ACTIVITY</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>SELECT DISTINCT PRODUCT0_.PRODUCT_ID AS PRODUCT_1_42_0_, AVAILABILI1_.PRODUCT_AVAIL_ID AS PRODUCT_1_44_1_, PRICES7_.PRODUCT_PRICE_ID AS PRODUCT_1_54_2_, DESCRIPTIO8_.DESCRIPTION_ID AS DESCRIPT1_55_3_, MERCHANTST2_.MERCHANT_ID AS MERCHANT1_27_4_, DESCRIPTIO3_.DESCRIPTION_ID AS DESCRIPT1_46_5_, CATEGORY5_.CATEGORY_ID AS CATEGORY1_0_6_, DESCRIPTIO6_.DESCRIPTION_ID AS DESCRIPT1_1_7_, IMAGES9_.PRODUCT_IMAGE_ID AS PRODUCT_1_48_8_, ATTRIBUTES10_.PRODUCT_ATTRIBUTE_ID AS PRODUCT_1_43_9_, PRODUCTOPT11_.PR</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Query Type</name>
+          <value>Query</value>
+        </name-value>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970146065</value>
+        </name-value>
+        <name-value>
+          <id>0</id>
+          <name>Statement Type</name>
+          <value>Prepared Statement</value>
+        </name-value>
+      </properties>
+      <toComponentId>{[UNRESOLVED][16]}</toComponentId>
+      <timeTakenInMillis>31</timeTakenInMillis>
+      <count>3</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>33</snapshotSequenceCounter>
+      <callingMethod>com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery:431</callingMethod>
+      <exitPointName>JDBC</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+  </snapshotExitCalls>
+  <exitCallsDataTruncated>true</exitCallsDataTruncated>
+  <exitCallsDataTruncationMessage>Snapshot call graph contains CPU times - This is a Hotspot call graph</exitCallsDataTruncationMessage>
+  <URL>/shop/cart/addShoppingCartItem</URL>
+  <httpSessionID>441952ED0E42D6E74D9688C62F5EA8B7</httpSessionID>
+  <errorIDs/>
+  <errorDetails/>
+  <httpParameters/>
+  <businessData/>
+  <cookies/>
+  <httpHeaders/>
+  <sessionKeys/>
+  <responseHeaders/>
+  <logMessages/>
+  <transactionProperties>
+    <name-value>
+      <id>0</id>
+      <name>Servlet URI</name>
+      <value>/shop/cart/addShoppingCartItem</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>EUM Request GUID</name>
+      <value>18b1eb09-67c5-4d33-9b9b-600f0efa2ec2</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>ProcessID</name>
+      <value>1664</value>
+    </name-value>
+  </transactionProperties>
+  <transactionEvents/>
+  <unresolvedCallInCallChain>false</unresolvedCallInCallChain>
+  <dotnetProperty/>
+  <endToEndLatency>-1</endToEndLatency>
+</request-segment-data>
+<request-segment-data>
+  <id>0</id>
+  <archived>false</archived>
+  <requestGUID>e0a13f7f-ccc0-47a3-9440-a3d73ec54391</requestGUID>
+  <businessTransactionId>217</businessTransactionId>
+  <applicationId>10</applicationId>
+  <applicationComponentId>16</applicationComponentId>
+  <applicationComponentNodeId>300</applicationComponentNodeId>
+  <async>false</async>
+  <threadID>58</threadID>
+  <threadName>http-nio-8080-exec-7</threadName>
+  <localStartTime>1578970142629</localStartTime>
+  <serverStartTime>1578970142629</serverStartTime>
+  <firstInChain>true</firstInChain>
+  <callChain>Component:16</callChain>
+  <localID>0</localID>
+  <errorOccured>false</errorOccured>
+  <hasDeepDiveData>true</hasDeepDiveData>
+  <userExperience>NORMAL</userExperience>
+  <timeTakenInMilliSecs>180</timeTakenInMilliSecs>
+  <cpuTimeTakenInMilliSecs>120</cpuTimeTakenInMilliSecs>
+  <warningThreshold>1189 ms. Average response time [989.0] (minimum baseline: 200 ms) over last 0 minutes. Standard deviation unavailable in first 30 minutes.</warningThreshold>
+  <criticalThreshold>1589 ms. Average response time [989.0] (minimum baseline: 600 ms) over last 0 minutes. Standard deviation unavailable in first 30 minutes.</criticalThreshold>
+  <summary>Scheduled Snapshots: one every 10 minutes. </summary>
+  <errorSummary></errorSummary>
+  <diagnosticSessionGUID></diagnosticSessionGUID>
+  <deepDivePolicy>TIME_SAMPLING</deepDivePolicy>
+  <delayedDeepDive>false</delayedDeepDive>
+  <delayedDeepDiveOffSet>0</delayedDeepDiveOffSet>
+  <stallDump></stallDump>
+  <snapshotExitSequence></snapshotExitSequence>
+  <snapshotExitCalls>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>Asynchronous activity identified</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970142679</value>
+        </name-value>
+      </properties>
+      <toComponentId>16</toComponentId>
+      <timeTakenInMillis>2</timeTakenInMillis>
+      <count>1</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>30</snapshotSequenceCounter>
+      <callingMethod>org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod:840</callingMethod>
+      <exitPointName>ASYNC ACTIVITY</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>SELECT DISTINCT PRODUCT0_.PRODUCT_ID AS PRODUCT_1_42_0_, AVAILABILI1_.PRODUCT_AVAIL_ID AS PRODUCT_1_44_1_, PRICES4_.PRODUCT_PRICE_ID AS PRODUCT_1_54_2_, DESCRIPTIO5_.DESCRIPTION_ID AS DESCRIPT1_55_3_, DESCRIPTIO2_.DESCRIPTION_ID AS DESCRIPT1_46_4_, MERCHANTST3_.MERCHANT_ID AS MERCHANT1_27_5_, CATEGORY7_.CATEGORY_ID AS CATEGORY1_0_6_, DESCRIPTIO8_.DESCRIPTION_ID AS DESCRIPT1_1_7_, IMAGES9_.PRODUCT_IMAGE_ID AS PRODUCT_1_48_8_, ATTRIBUTES10_.PRODUCT_ATTRIBUTE_ID AS PRODUCT_1_43_9_, PRODUCTOPT11_.PR</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Query Type</name>
+          <value>Query</value>
+        </name-value>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970142682</value>
+        </name-value>
+        <name-value>
+          <id>0</id>
+          <name>Statement Type</name>
+          <value>Prepared Statement</value>
+        </name-value>
+      </properties>
+      <toComponentId>{[UNRESOLVED][16]}</toComponentId>
+      <timeTakenInMillis>12</timeTakenInMillis>
+      <count>1</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>32</snapshotSequenceCounter>
+      <callingMethod>com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery:431</callingMethod>
+      <exitPointName>JDBC</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+  </snapshotExitCalls>
+  <exitCallsDataTruncated>true</exitCallsDataTruncated>
+  <exitCallsDataTruncationMessage>Snapshot call graph contains CPU times - This is a Hotspot call graph</exitCallsDataTruncationMessage>
+  <URL>/shop/product/.html</URL>
+  <httpSessionID>441952ED0E42D6E74D9688C62F5EA8B7</httpSessionID>
+  <errorIDs/>
+  <errorDetails/>
+  <httpParameters/>
+  <businessData/>
+  <cookies/>
+  <httpHeaders/>
+  <sessionKeys/>
+  <responseHeaders/>
+  <logMessages/>
+  <transactionProperties>
+    <name-value>
+      <id>0</id>
+      <name>Servlet URI</name>
+      <value>/pages/shop/templates/bootstrap/catalogLayout.jsp</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>EUM Request GUID</name>
+      <value>59c3b0a1-92e2-4ac9-80ac-c7233e7936f4</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>ProcessID</name>
+      <value>1664</value>
+    </name-value>
+  </transactionProperties>
+  <transactionEvents/>
+  <unresolvedCallInCallChain>false</unresolvedCallInCallChain>
+  <dotnetProperty/>
+  <endToEndLatency>-1</endToEndLatency>
+</request-segment-data>
+<request-segment-data>
+  <id>0</id>
+  <archived>false</archived>
+  <requestGUID>9f13291c-0f77-43b9-b7d4-56c1148e08df</requestGUID>
+  <businessTransactionId>211</businessTransactionId>
+  <applicationId>10</applicationId>
+  <applicationComponentId>16</applicationComponentId>
+  <applicationComponentNodeId>300</applicationComponentNodeId>
+  <async>false</async>
+  <threadID>56</threadID>
+  <threadName>http-nio-8080-exec-5</threadName>
+  <localStartTime>1578970133650</localStartTime>
+  <serverStartTime>1578970133650</serverStartTime>
+  <firstInChain>true</firstInChain>
+  <callChain>Component:16</callChain>
+  <localID>0</localID>
+  <errorOccured>false</errorOccured>
+  <hasDeepDiveData>true</hasDeepDiveData>
+  <userExperience>NORMAL</userExperience>
+  <timeTakenInMilliSecs>378</timeTakenInMilliSecs>
+  <cpuTimeTakenInMilliSecs>304</cpuTimeTakenInMilliSecs>
+  <warningThreshold>646 ms. Average response time [446.0] (minimum baseline: 200 ms) over last 0 minutes. Standard deviation unavailable in first 30 minutes.</warningThreshold>
+  <criticalThreshold>1046 ms. Average response time [446.0] (minimum baseline: 600 ms) over last 0 minutes. Standard deviation unavailable in first 30 minutes.</criticalThreshold>
+  <summary>Scheduled Snapshots: one every 10 minutes. </summary>
+  <errorSummary></errorSummary>
+  <diagnosticSessionGUID></diagnosticSessionGUID>
+  <deepDivePolicy>TIME_SAMPLING</deepDivePolicy>
+  <delayedDeepDive>false</delayedDeepDive>
+  <delayedDeepDiveOffSet>0</delayedDeepDiveOffSet>
+  <stallDump></stallDump>
+  <snapshotExitSequence></snapshotExitSequence>
+  <snapshotExitCalls>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>Asynchronous activity identified</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970133693</value>
+        </name-value>
+      </properties>
+      <toComponentId>16</toComponentId>
+      <timeTakenInMillis>0</timeTakenInMillis>
+      <count>1</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>30</snapshotSequenceCounter>
+      <callingMethod>org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod:840</callingMethod>
+      <exitPointName>ASYNC ACTIVITY</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>SELECT DISTINCT PRODUCT0_.PRODUCT_ID AS PRODUCT_1_42_0_, AVAILABILI1_.PRODUCT_AVAIL_ID AS PRODUCT_1_44_1_, PRICES7_.PRODUCT_PRICE_ID AS PRODUCT_1_54_2_, DESCRIPTIO8_.DESCRIPTION_ID AS DESCRIPT1_55_3_, MERCHANTST2_.MERCHANT_ID AS MERCHANT1_27_4_, DESCRIPTIO3_.DESCRIPTION_ID AS DESCRIPT1_46_5_, CATEGORY5_.CATEGORY_ID AS CATEGORY1_0_6_, DESCRIPTIO6_.DESCRIPTION_ID AS DESCRIPT1_1_7_, IMAGES9_.PRODUCT_IMAGE_ID AS PRODUCT_1_48_8_, ATTRIBUTES10_.PRODUCT_ATTRIBUTE_ID AS PRODUCT_1_43_9_, PRODUCTOPT11_.PR</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Query Type</name>
+          <value>Query</value>
+        </name-value>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970133986</value>
+        </name-value>
+        <name-value>
+          <id>0</id>
+          <name>Statement Type</name>
+          <value>Prepared Statement</value>
+        </name-value>
+      </properties>
+      <toComponentId>{[UNRESOLVED][16]}</toComponentId>
+      <timeTakenInMillis>10</timeTakenInMillis>
+      <count>1</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>46</snapshotSequenceCounter>
+      <callingMethod>com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery:431</callingMethod>
+      <exitPointName>JDBC</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+  </snapshotExitCalls>
+  <exitCallsDataTruncated>true</exitCallsDataTruncated>
+  <exitCallsDataTruncationMessage>Snapshot call graph contains CPU times - This is a Hotspot call graph</exitCallsDataTruncationMessage>
+  <URL>/shop/customer/logon.html</URL>
+  <httpSessionID>441952ED0E42D6E74D9688C62F5EA8B7</httpSessionID>
+  <errorIDs/>
+  <errorDetails/>
+  <httpParameters/>
+  <businessData/>
+  <cookies/>
+  <httpHeaders/>
+  <sessionKeys/>
+  <responseHeaders/>
+  <logMessages/>
+  <transactionProperties>
+    <name-value>
+      <id>0</id>
+      <name>Servlet URI</name>
+      <value>/shop/customer/logon.html</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>EUM Request GUID</name>
+      <value>cee88e86-50aa-48b9-ac69-4e27a6350ce7</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>ProcessID</name>
+      <value>1664</value>
+    </name-value>
+  </transactionProperties>
+  <transactionEvents/>
+  <unresolvedCallInCallChain>false</unresolvedCallInCallChain>
+  <dotnetProperty/>
+  <endToEndLatency>-1</endToEndLatency>
+</request-segment-data>
+<request-segment-data>
+  <id>0</id>
+  <archived>false</archived>
+  <requestGUID>8fc373a5-ea27-4eb0-99e6-97555af68690</requestGUID>
+  <businessTransactionId>195</businessTransactionId>
+  <applicationId>10</applicationId>
+  <applicationComponentId>16</applicationComponentId>
+  <applicationComponentNodeId>300</applicationComponentNodeId>
+  <async>false</async>
+  <threadID>53</threadID>
+  <threadName>http-nio-8080-exec-2</threadName>
+  <localStartTime>1578970123730</localStartTime>
+  <serverStartTime>1578970123730</serverStartTime>
+  <firstInChain>true</firstInChain>
+  <callChain>Component:16</callChain>
+  <localID>0</localID>
+  <errorOccured>false</errorOccured>
+  <hasDeepDiveData>true</hasDeepDiveData>
+  <userExperience>NORMAL</userExperience>
+  <timeTakenInMilliSecs>817</timeTakenInMilliSecs>
+  <cpuTimeTakenInMilliSecs>133</cpuTimeTakenInMilliSecs>
+  <warningThreshold>993 ms. Average response time [793.0] (minimum baseline: 200 ms) over last 0 minutes. Standard deviation unavailable in first 30 minutes.</warningThreshold>
+  <criticalThreshold>1393 ms. Average response time [793.0] (minimum baseline: 600 ms) over last 0 minutes. Standard deviation unavailable in first 30 minutes.</criticalThreshold>
+  <summary>Scheduled Snapshots: one every 10 minutes. </summary>
+  <errorSummary></errorSummary>
+  <diagnosticSessionGUID></diagnosticSessionGUID>
+  <deepDivePolicy>TIME_SAMPLING</deepDivePolicy>
+  <delayedDeepDive>false</delayedDeepDive>
+  <delayedDeepDiveOffSet>0</delayedDeepDiveOffSet>
+  <stallDump></stallDump>
+  <snapshotExitSequence></snapshotExitSequence>
+  <snapshotExitCalls>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>Asynchronous activity identified</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970123772</value>
+        </name-value>
+      </properties>
+      <toComponentId>16</toComponentId>
+      <timeTakenInMillis>1</timeTakenInMillis>
+      <count>1</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>30</snapshotSequenceCounter>
+      <callingMethod>org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod:840</callingMethod>
+      <exitPointName>ASYNC ACTIVITY</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>SELECT DISTINCT PRODUCTREL0_.PRODUCT_RELATIONSHIP_ID AS PRODUCT_1_56_0_, PRODUCT1_.PRODUCT_ID AS PRODUCT_1_42_1_, PRODUCT2_.PRODUCT_ID AS PRODUCT_1_42_2_, ATTRIBUTES3_.PRODUCT_ATTRIBUTE_ID AS PRODUCT_1_43_3_, PRODUCTOPT4_.PRODUCT_OPTION_ID AS PRODUCT_1_50_4_, DESCRIPTIO5_.DESCRIPTION_ID AS DESCRIPT1_51_5_, PRODUCTOPT6_.PRODUCT_OPTION_VALUE_ID AS PRODUCT_1_52_6_, DESCRIPTIO7_.DESCRIPTION_ID AS DESCRIPT1_53_7_, CATEGORY9_.CATEGORY_ID AS CATEGORY1_0_8_, DESCRIPTIO10_.DESCRIPTION_ID AS DESCRIPT1_1_9</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Query Type</name>
+          <value>Query</value>
+        </name-value>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970123784</value>
+        </name-value>
+        <name-value>
+          <id>0</id>
+          <name>Statement Type</name>
+          <value>Prepared Statement</value>
+        </name-value>
+      </properties>
+      <toComponentId>{[UNRESOLVED][16]}</toComponentId>
+      <timeTakenInMillis>37</timeTakenInMillis>
+      <count>3</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>36</snapshotSequenceCounter>
+      <callingMethod>com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery:431</callingMethod>
+      <exitPointName>JDBC</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+  </snapshotExitCalls>
+  <exitCallsDataTruncated>true</exitCallsDataTruncated>
+  <exitCallsDataTruncationMessage>Snapshot call graph contains CPU times - This is a Hotspot call graph</exitCallsDataTruncationMessage>
+  <URL>/shop</URL>
+  <httpSessionID>441952ED0E42D6E74D9688C62F5EA8B7</httpSessionID>
+  <errorIDs/>
+  <errorDetails/>
+  <httpParameters/>
+  <businessData/>
+  <cookies/>
+  <httpHeaders/>
+  <sessionKeys/>
+  <responseHeaders/>
+  <logMessages/>
+  <transactionProperties>
+    <name-value>
+      <id>0</id>
+      <name>Servlet URI</name>
+      <value>/pages/shop/templates/bootstrap/catalogLayout.jsp</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>EUM Request GUID</name>
+      <value>426b081a-8407-45b7-9d2d-7731b5722d62</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>ProcessID</name>
+      <value>1664</value>
+    </name-value>
+  </transactionProperties>
+  <transactionEvents/>
+  <unresolvedCallInCallChain>false</unresolvedCallInCallChain>
+  <dotnetProperty/>
+  <endToEndLatency>-1</endToEndLatency>
+</request-segment-data>
+<request-segment-data>
+  <id>0</id>
+  <archived>false</archived>
+  <requestGUID>4116e1e1-b5a8-4cb8-a512-d62720ae1057</requestGUID>
+  <businessTransactionId>212</businessTransactionId>
+  <applicationId>10</applicationId>
+  <applicationComponentId>16</applicationComponentId>
+  <applicationComponentNodeId>300</applicationComponentNodeId>
+  <async>false</async>
+  <threadID>61</threadID>
+  <threadName>http-nio-8080-exec-10</threadName>
+  <localStartTime>1578970121281</localStartTime>
+  <serverStartTime>1578970121281</serverStartTime>
+  <firstInChain>true</firstInChain>
+  <callChain>Component:16</callChain>
+  <localID>0</localID>
+  <errorOccured>false</errorOccured>
+  <hasDeepDiveData>true</hasDeepDiveData>
+  <userExperience>NORMAL</userExperience>
+  <timeTakenInMilliSecs>131</timeTakenInMilliSecs>
+  <cpuTimeTakenInMilliSecs>0</cpuTimeTakenInMilliSecs>
+  <warningThreshold>300 ms. Average response time [99.5] (minimum baseline: 200 ms) over last 2 minutes. Standard deviation unavailable in first 30 minutes.</warningThreshold>
+  <criticalThreshold>700 ms. Average response time [99.5] (minimum baseline: 600 ms) over last 2 minutes. Standard deviation unavailable in first 30 minutes.</criticalThreshold>
+  <summary>Scheduled Snapshots: one every 10 minutes. </summary>
+  <errorSummary></errorSummary>
+  <diagnosticSessionGUID></diagnosticSessionGUID>
+  <deepDivePolicy>TIME_SAMPLING</deepDivePolicy>
+  <delayedDeepDive>false</delayedDeepDive>
+  <delayedDeepDiveOffSet>0</delayedDeepDiveOffSet>
+  <stallDump></stallDump>
+  <snapshotExitSequence></snapshotExitSequence>
+  <snapshotExitCalls>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>Asynchronous activity identified</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970121339</value>
+        </name-value>
+      </properties>
+      <toComponentId>16</toComponentId>
+      <timeTakenInMillis>0</timeTakenInMillis>
+      <count>1</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>30</snapshotSequenceCounter>
+      <callingMethod>org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod:840</callingMethod>
+      <exitPointName>ASYNC ACTIVITY</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>SELECT DISTINCT PRODUCT0_.PRODUCT_ID AS PRODUCT_1_42_0_, AVAILABILI1_.PRODUCT_AVAIL_ID AS PRODUCT_1_44_1_, PRICES7_.PRODUCT_PRICE_ID AS PRODUCT_1_54_2_, DESCRIPTIO8_.DESCRIPTION_ID AS DESCRIPT1_55_3_, MERCHANTST2_.MERCHANT_ID AS MERCHANT1_27_4_, DESCRIPTIO3_.DESCRIPTION_ID AS DESCRIPT1_46_5_, CATEGORY5_.CATEGORY_ID AS CATEGORY1_0_6_, DESCRIPTIO6_.DESCRIPTION_ID AS DESCRIPT1_1_7_, IMAGES9_.PRODUCT_IMAGE_ID AS PRODUCT_1_48_8_, ATTRIBUTES10_.PRODUCT_ATTRIBUTE_ID AS PRODUCT_1_43_9_, PRODUCTOPT11_.PR</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Query Type</name>
+          <value>Query</value>
+        </name-value>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970121346</value>
+        </name-value>
+        <name-value>
+          <id>0</id>
+          <name>Statement Type</name>
+          <value>Prepared Statement</value>
+        </name-value>
+      </properties>
+      <toComponentId>{[UNRESOLVED][16]}</toComponentId>
+      <timeTakenInMillis>27</timeTakenInMillis>
+      <count>2</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>33</snapshotSequenceCounter>
+      <callingMethod>com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery:431</callingMethod>
+      <exitPointName>JDBC</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+  </snapshotExitCalls>
+  <exitCallsDataTruncated>true</exitCallsDataTruncated>
+  <exitCallsDataTruncationMessage>Snapshot call graph contains CPU times - This is a Hotspot call graph</exitCallsDataTruncationMessage>
+  <URL>/shop/cart/displayMiniCartByCode</URL>
+  <httpSessionID>441952ED0E42D6E74D9688C62F5EA8B7</httpSessionID>
+  <errorIDs/>
+  <errorDetails/>
+  <httpParameters/>
+  <businessData/>
+  <cookies/>
+  <httpHeaders/>
+  <sessionKeys/>
+  <responseHeaders/>
+  <logMessages/>
+  <transactionProperties>
+    <name-value>
+      <id>0</id>
+      <name>Servlet URI</name>
+      <value>/shop/cart/displayMiniCartByCode</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>EUM Request GUID</name>
+      <value>c00b5435-77ad-4d18-bfaa-27d9dd6a1fa8</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>ProcessID</name>
+      <value>1664</value>
+    </name-value>
+  </transactionProperties>
+  <transactionEvents/>
+  <unresolvedCallInCallChain>false</unresolvedCallInCallChain>
+  <dotnetProperty/>
+  <endToEndLatency>-1</endToEndLatency>
+</request-segment-data>
+<request-segment-data>
+  <id>0</id>
+  <archived>false</archived>
+  <requestGUID>773b7e88-5768-4814-abab-c4d2add3b54b</requestGUID>
+  <businessTransactionId>200</businessTransactionId>
+  <applicationId>10</applicationId>
+  <applicationComponentId>16</applicationComponentId>
+  <applicationComponentNodeId>300</applicationComponentNodeId>
+  <async>false</async>
+  <threadID>55</threadID>
+  <threadName>http-nio-8080-exec-4</threadName>
+  <localStartTime>1578970121191</localStartTime>
+  <serverStartTime>1578970121191</serverStartTime>
+  <firstInChain>true</firstInChain>
+  <callChain>Component:16</callChain>
+  <localID>0</localID>
+  <errorOccured>false</errorOccured>
+  <hasDeepDiveData>true</hasDeepDiveData>
+  <userExperience>NORMAL</userExperience>
+  <timeTakenInMilliSecs>48</timeTakenInMilliSecs>
+  <cpuTimeTakenInMilliSecs>0</cpuTimeTakenInMilliSecs>
+  <warningThreshold>214 ms. Average response time [14.0] (minimum baseline: 200 ms) over last 2 minutes. Standard deviation unavailable in first 30 minutes.</warningThreshold>
+  <criticalThreshold>614 ms. Average response time [14.0] (minimum baseline: 600 ms) over last 2 minutes. Standard deviation unavailable in first 30 minutes.</criticalThreshold>
+  <summary>Scheduled Snapshots: one every 10 minutes. </summary>
+  <errorSummary></errorSummary>
+  <diagnosticSessionGUID></diagnosticSessionGUID>
+  <deepDivePolicy>TIME_SAMPLING</deepDivePolicy>
+  <delayedDeepDive>false</delayedDeepDive>
+  <delayedDeepDiveOffSet>0</delayedDeepDiveOffSet>
+  <stallDump></stallDump>
+  <snapshotExitSequence></snapshotExitSequence>
+  <snapshotExitCalls>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>Asynchronous activity identified</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970121197</value>
+        </name-value>
+      </properties>
+      <toComponentId>16</toComponentId>
+      <timeTakenInMillis>0</timeTakenInMillis>
+      <count>1</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>1</snapshotSequenceCounter>
+      <callingMethod>org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod:840</callingMethod>
+      <exitPointName>ASYNC ACTIVITY</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString></detailString>
+      <properties/>
+      <toComponentId>{[UNRESOLVED][14]}</toComponentId>
+      <timeTakenInMillis>14</timeTakenInMillis>
+      <count>1</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter></snapshotSequenceCounter>
+      <callingMethod>net.sf.ehcache.Cache.get</callingMethod>
+      <exitPointName>CUSTOM</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString></detailString>
+      <properties/>
+      <toComponentId>{[UNRESOLVED][15]}</toComponentId>
+      <timeTakenInMillis>0</timeTakenInMillis>
+      <count>2</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter></snapshotSequenceCounter>
+      <callingMethod>net.sf.ehcache.Cache.put</callingMethod>
+      <exitPointName>CUSTOM</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+  </snapshotExitCalls>
+  <exitCallsDataTruncated>true</exitCallsDataTruncated>
+  <exitCallsDataTruncationMessage>Snapshot call graph contains CPU times - This is a Hotspot call graph</exitCallsDataTruncationMessage>
+  <URL>/shop/reference/zoneName</URL>
+  <httpSessionID>441952ED0E42D6E74D9688C62F5EA8B7</httpSessionID>
+  <errorIDs/>
+  <errorDetails/>
+  <httpParameters/>
+  <businessData/>
+  <cookies/>
+  <httpHeaders/>
+  <sessionKeys/>
+  <responseHeaders/>
+  <logMessages/>
+  <transactionProperties>
+    <name-value>
+      <id>0</id>
+      <name>Servlet URI</name>
+      <value>/shop/reference/zoneName</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>EUM Request GUID</name>
+      <value>1a4eeee6-2d79-4dc9-8dd6-c0383b3197ed</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>ProcessID</name>
+      <value>1664</value>
+    </name-value>
+  </transactionProperties>
+  <transactionEvents/>
+  <unresolvedCallInCallChain>false</unresolvedCallInCallChain>
+  <dotnetProperty/>
+  <endToEndLatency>-1</endToEndLatency>
+</request-segment-data>
+<request-segment-data>
+  <id>0</id>
+  <archived>false</archived>
+  <requestGUID>748766c1-f2fc-4037-9c2e-fb1690863897</requestGUID>
+  <businessTransactionId>198</businessTransactionId>
+  <applicationId>10</applicationId>
+  <applicationComponentId>16</applicationComponentId>
+  <applicationComponentNodeId>300</applicationComponentNodeId>
+  <async>false</async>
+  <threadID>60</threadID>
+  <threadName>http-nio-8080-exec-9</threadName>
+  <localStartTime>1578970121191</localStartTime>
+  <serverStartTime>1578970121191</serverStartTime>
+  <firstInChain>true</firstInChain>
+  <callChain>Component:16</callChain>
+  <localID>0</localID>
+  <errorOccured>false</errorOccured>
+  <hasDeepDiveData>true</hasDeepDiveData>
+  <userExperience>NORMAL</userExperience>
+  <timeTakenInMilliSecs>33</timeTakenInMilliSecs>
+  <cpuTimeTakenInMilliSecs>0</cpuTimeTakenInMilliSecs>
+  <warningThreshold>212 ms. Average response time [12.0] (minimum baseline: 200 ms) over last 2 minutes. Standard deviation unavailable in first 30 minutes.</warningThreshold>
+  <criticalThreshold>612 ms. Average response time [12.0] (minimum baseline: 600 ms) over last 2 minutes. Standard deviation unavailable in first 30 minutes.</criticalThreshold>
+  <summary>Scheduled Snapshots: one every 10 minutes. All transactions under 35 ms are normal.</summary>
+  <errorSummary></errorSummary>
+  <diagnosticSessionGUID></diagnosticSessionGUID>
+  <deepDivePolicy>TIME_SAMPLING</deepDivePolicy>
+  <delayedDeepDive>false</delayedDeepDive>
+  <delayedDeepDiveOffSet>0</delayedDeepDiveOffSet>
+  <stallDump></stallDump>
+  <snapshotExitSequence></snapshotExitSequence>
+  <snapshotExitCalls>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>Asynchronous activity identified</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970121197</value>
+        </name-value>
+      </properties>
+      <toComponentId>16</toComponentId>
+      <timeTakenInMillis>1</timeTakenInMillis>
+      <count>1</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>1</snapshotSequenceCounter>
+      <callingMethod>org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod:840</callingMethod>
+      <exitPointName>ASYNC ACTIVITY</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString></detailString>
+      <properties/>
+      <toComponentId>{[UNRESOLVED][14]}</toComponentId>
+      <timeTakenInMillis>1</timeTakenInMillis>
+      <count>1</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter></snapshotSequenceCounter>
+      <callingMethod>net.sf.ehcache.Cache.get</callingMethod>
+      <exitPointName>CUSTOM</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString></detailString>
+      <properties/>
+      <toComponentId>{[UNRESOLVED][15]}</toComponentId>
+      <timeTakenInMillis>0</timeTakenInMillis>
+      <count>2</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter></snapshotSequenceCounter>
+      <callingMethod>net.sf.ehcache.Cache.put</callingMethod>
+      <exitPointName>CUSTOM</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+  </snapshotExitCalls>
+  <exitCallsDataTruncated>true</exitCallsDataTruncated>
+  <exitCallsDataTruncationMessage>Snapshot call graph contains CPU times - This is a Hotspot call graph</exitCallsDataTruncationMessage>
+  <URL>/shop/reference/countryName</URL>
+  <httpSessionID>441952ED0E42D6E74D9688C62F5EA8B7</httpSessionID>
+  <errorIDs/>
+  <errorDetails/>
+  <httpParameters/>
+  <businessData/>
+  <cookies/>
+  <httpHeaders/>
+  <sessionKeys/>
+  <responseHeaders/>
+  <logMessages/>
+  <transactionProperties>
+    <name-value>
+      <id>0</id>
+      <name>Servlet URI</name>
+      <value>/shop/reference/countryName</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>EUM Request GUID</name>
+      <value>a50206a1-8f3a-446f-958f-763dc85dac79</value>
+    </name-value>
+    <name-value>
+      <id>0</id>
+      <name>ProcessID</name>
+      <value>1664</value>
+    </name-value>
+  </transactionProperties>
+  <transactionEvents/>
+  <unresolvedCallInCallChain>false</unresolvedCallInCallChain>
+  <dotnetProperty/>
+  <endToEndLatency>-1</endToEndLatency>
+</request-segment-data>
+<request-segment-data>
+  <id>0</id>
+  <archived>false</archived>
+  <requestGUID>51584875-a72e-4ba1-a9f3-cba6d1aec65a</requestGUID>
+  <businessTransactionId>187</businessTransactionId>
+  <applicationId>10</applicationId>
+  <applicationComponentId>16</applicationComponentId>
+  <applicationComponentNodeId>300</applicationComponentNodeId>
+  <async>false</async>
+  <threadID>54</threadID>
+  <threadName>http-nio-8080-exec-3</threadName>
+  <localStartTime>1578970120913</localStartTime>
+  <serverStartTime>1578970120913</serverStartTime>
+  <firstInChain>true</firstInChain>
+  <callChain>Component:16</callChain>
+  <localID>0</localID>
+  <errorOccured>false</errorOccured>
+  <hasDeepDiveData>true</hasDeepDiveData>
+  <userExperience>NORMAL</userExperience>
+  <timeTakenInMilliSecs>9</timeTakenInMilliSecs>
+  <cpuTimeTakenInMilliSecs>0</cpuTimeTakenInMilliSecs>
+  <warningThreshold>225 ms. Average response time [24.7] (minimum baseline: 200 ms) over last 3 minutes. Standard deviation unavailable in first 30 minutes.</warningThreshold>
+  <criticalThreshold>625 ms. Average response time [24.7] (minimum baseline: 600 ms) over last 3 minutes. Standard deviation unavailable in first 30 minutes.</criticalThreshold>
+  <summary>Scheduled Snapshots: one every 10 minutes. All transactions under 35 ms are normal.</summary>
+  <errorSummary></errorSummary>
+  <diagnosticSessionGUID></diagnosticSessionGUID>
+  <deepDivePolicy>TIME_SAMPLING</deepDivePolicy>
+  <delayedDeepDive>false</delayedDeepDive>
+  <delayedDeepDiveOffSet>0</delayedDeepDiveOffSet>
+  <stallDump></stallDump>
+  <snapshotExitSequence></snapshotExitSequence>
+  <snapshotExitCalls>
+    <snapshot-exit-call>
+      <customExitPointId>-1</customExitPointId>
+      <detailString>Asynchronous activity identified</detailString>
+      <properties>
+        <name-value>
+          <id>0</id>
+          <name>Start Time</name>
+          <value>1578970120916</value>
+        </name-value>
+      </properties>
+      <toComponentId>16</toComponentId>
+      <timeTakenInMillis>1</timeTakenInMillis>
+      <count>1</count>
+      <errorCount>0</errorCount>
+      <errorDetails></errorDetails>
+      <snapshotSequenceCounter>1</snapshotSequenceCounter>
+      <callingMethod>org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod:840</callingMethod>
+      <exitPointName>ASYNC ACTIVITY</exitPointName>
+      <timestamp>0</timestamp>
+    </snapshot-exit-call>
+  </snapshotExitCalls>
+  <exitCallsDataTruncated>true</exitCallsDataTruncated>
+  <exitCallsDataTruncationMessage>Snapshot call graph contains CPU times - This is a Hotspot call graph</exitCallsDataTruncationMessage>
+  <URL>/static/files/DEFAULT/LOGO/Vintage-Bags.jpg</URL>
+  <httpSessionID>441952ED0E42D6E74D9688C62F5EA8B7</httpSessionID>
+  <errorIDs/>
+  <errorDetails/>
+  <httpParameters/>
+  <businessData/>
+  <cookies/>
+  <httpHeaders/>
+  <sessionKeys/>
+  <responseHeaders/>
+  <logMessages/>
+  <transactionProperties>
+    <name-value>
+      <id>0</id>
+      <name>ProcessID</name>
+      <value>1664</value>
+    </name-value>
+  </transactionProperties>
+  <transactionEvents/>
+  <unresolvedCallInCallChain>false</unresolvedCallInCallChain>
+  <dotnetProperty/>
+  <endToEndLatency>-1</endToEndLatency>
+</request-segment-data>
+</request-segment-datas>

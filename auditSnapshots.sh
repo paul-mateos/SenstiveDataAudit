@@ -27,9 +27,6 @@ filter=$AUDITHOME'/out/audit/config/sensitiveFilters.config'
 #refer to config file
 . ./controller.config
 
-analyticsURL=$queryURL
-URL=$eventsURL
-
 if [ $# -gt 0 ]; then
    env=$1
 else
@@ -44,13 +41,17 @@ if [ "$env" == "Prod" ]; then
   API_KEY=$Prod_API_KEY 
   ProxyServer=$Prod_ProxyServer
   ProxyPort=$Prod_ProxyPort
+  URL="$Prod_eventsURL/events"
+  analyticsURL="$Prod_eventsURL/events/query"
 elif [ "$env" == "Test" ]; then
   controllerURL=$Test_controllerURL
-  hashedCredentials=$Teset_hashedCredentials
+  hashedCredentials=$Test_hashedCredentials
   API_ACCOUNT=$Test_API_ACCOUNT             # Controller Global Account Name
   API_KEY=$Test_API_KEY 
   ProxyServer=$Test_ProxyServer
-  ProxyPort=$Test_ProxyPort  
+  ProxyPort=$Test_ProxyPort
+  analyticsURL="$Test_eventsURL/events/query"  
+  URL="$Test_eventsURL/events"
 else
   echo "Invalid environment specified"
   exit

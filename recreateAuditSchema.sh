@@ -29,26 +29,27 @@ else
 fi
  
 if [ "$env" == "Prod" ]; then
-  controllerURL=$Prod_controllerURL
+  eventsURL=$Prod_eventsURL
   GLOBAL_ACCOUNT=$Prod_API_ACCOUNT             # Controller Global Account Name
   API_KEY=$Prod_API_KEY
-  ProxyServer=$Prod_ProxyServer
+  ProxyHost=$Prod_ProxyServer
   ProxyPort=$Prod_ProxyPort
 elif [ "$env" == "Test" ]; then
-  controllerURL=$Test_controllerURL
+  eventsURL=$Test_eventsURL
   GLOBAL_ACCOUNT=$Test_API_ACCOUNT             # Controller Global Account Name
   API_KEY=$Test_API_KEY
-  ProxyServer=$Test_ProxyServer
+  ProxyHost=$Test_ProxyServer
   ProxyPort=$Test_ProxyPort
 else
   echo "Invalid environment specified"
   exit
 fi
+
 # Delete existing schema
-curl -v -k -X DELETE --proxy $ProxyHost:$ProxyPort "$controllerURL:9080/events/schema/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$GLOBAL_ACCOUNT" -H"X-Events-API-Key:$API_KEY"
+curl -v -k -X DELETE --proxy $ProxyHost:$ProxyPort "$eventsURL/events/schema/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$GLOBAL_ACCOUNT" -H"X-Events-API-Key:$API_KEY"
 
 # Wait for the schema to disappear. 
 sleep 30
 
 #Create new schema 
-curl -v -k -X POST --proxy $ProxyHost:$ProxyPort "$controllerURL:9080/events/schema/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$GLOBAL_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "{\"schema\" : { \"AuditTime\": \"string\", \"Environment\": \"string\", \"Tenant\": \"string\", \"SnapshotType\": \"string\", \"Status\": \"string\", \"Description\": \"string\", \"SampleData\": \"string\"} }"
+curl -v -k -X POST --proxy $ProxyHost:$ProxyPort "$eventsURL/events/schema/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$GLOBAL_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "{\"schema\" : { \"AuditTime\": \"string\", \"Environment\": \"string\", \"Tenant\": \"string\", \"SnapshotType\": \"string\", \"Status\": \"string\", \"Description\": \"string\", \"SampleData\": \"string\"} }"

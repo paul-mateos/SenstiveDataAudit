@@ -25,9 +25,6 @@ filter=$AUDITHOME'/out/audit/config/sensitiveFilters.config'
 #refer to config file
 . ./controller.config
 
-analyticsURL=$queryURL
-URL=$eventsURL
-
 if [ $# -gt 0 ]; then
    env=$1
 else
@@ -36,38 +33,42 @@ else
 fi
  
 if [ "$env" == "Prod" ]; then
+  eventsURL=$Prod_eventsURL
   controllerURL=$Prod_controllerURL 
   hashedCredentials=$Prod_hashedCredentials
   API_ACCOUNT=$Prod_API_ACCOUNT             # Controller Global Account Name
   API_KEY=$Prod_API_KEY 
-  ProxyServer=$Prod_ProxyServer
+  ProxyHost=$Prod_ProxyServer
   ProxyPort=$Prod_ProxyPort
 elif [ "$env" == "Test" ]; then
+  eventsURL=$Test_eventsURL
   controllerURL=$Test_controllerURL
-  hashedCredentials=$Teset_hashedCredentials
+  hashedCredentials=$Test_hashedCredentials
   API_ACCOUNT=$Test_API_ACCOUNT             # Controller Global Account Name
   API_KEY=$Test_API_KEY 
-  ProxyServer=$Test_ProxyServer
+  ProxyHost=$Test_ProxyServer
   ProxyPort=$Test_ProxyPort
-else  
+else
     echo "Invalid environment specified"
     exit
 fi
- 
-curl -s -c $cookieFile --header "Authorization: Basic ${hashedCredentials}"  -X GET $controllerURL/auth?action=login
+
+#configure all your connection details
+curl -v -c $cookieFile --proxy $ProxyHost:$ProxyPort --header "Authorization: Basic ${hashedCredentials}" $controllerURL/auth?action=login
+echo "###################Cookiefile:"$cookieFile
 X_CSRF_TOKEN="$(grep X-CSRF-TOKEN $cookieFile|rev|cut -d$'\t' -f1|rev)"
+echo "Token:"$X_CSRF_TOKEN
 X_CSRF_TOKEN_HEADER="`if [ -n "$X_CSRF_TOKEN" ]; then echo "X-CSRF-TOKEN:$X_CSRF_TOKEN"; else echo ''; fi`"
  
-appsList=`curl -s -b $cookieFile -H "$X_CSRF_TOKEN_HEADER" -X GET "$controllerURL/restui/eumApplications/getAllMobileApplicationsData?time-range=last_2_weeks.BEFORE_NOW.-1.-1.20160" | grep appKey | sed -E 's/\".* \: \"//g' | sed -E 's/",//g'`
+appsList=`curl -v -b $cookieFile -H "$X_CSRF_TOKEN_HEADER" -X GET "$controllerURL/restui/eumApplications/getAllMobileApplicationsData?time-range=last_2_weeks.BEFORE_NOW.-1.-1.20160" | grep appKey | sed -E 's/\".* \: \"//g' | sed -E 's/",//g'`
 sortedList=$(echo $appsList | xargs -n1 | sort -u | xargs)
 for appKey in $sortedList
 do
-  echo $appKey
-  stmt=`echo curl -s  -X POST \"$analyticsURL\" -H\"X-Events-API-AccountName:$API_ACCOUNT\" -H\"X-Events-API-Key:$API_KEY\" -H\"Content-type: application/vnd.appd.events+text\;v=2\" -d \'SELECT networkrequestname, ip FROM mobile_snapshots WHERE appkey = \"ABCDEF\" SINCE 1 hours\' | sed "s/ABCDEF/$appKey/g"`
-  eval $stmt > /Applications/AppDynamics/data/AppdCustomReports/tmpFile.json
+  echo "#############AppKey:$appKey"
+  stmt=`echo curl -v -X POST \"$eventsURL/events/query\" -H\"X-Events-API-AccountName:$API_ACCOUNT\" -H\"X-Events-API-Key:$API_KEY\" -H\"Content-type: application/vnd.appd.events+text\;v=2\" -d \'SELECT networkrequestname, ip FROM mobile_snapshots WHERE appkey = \"ABCDEF\" SINCE 1 hours\' | sed "s/ABCDEF/$appKey/g"`
+  eval $stmt > ./tmpFile.json
   entriesFound=0;
-  #cmd="python /Users/yadiraj.narayan/Documents/westpac/Audit/formatJson.py | grep -E '(?:[0-9]{1,3}\.){3}[0-9]{1,3}|[0-9]{16}|(\.[\w\-]+)*@([A-Za-z0-9-]+\.)+[A-Za-z]{2,4}' $OPTIONS |sed -E 's/\b\w+@/###  Email-Address  ### @/g' | sed -E 's/[0-9]{16}/#### 16 Digits ####/g'"
-   cmd="python /Users/yadiraj.narayan/Documents/westpac/Audit/formatJson.py | grep -E '(?:[0-9]{1,3}\.){3}[0-9]{1,3}|[0-9]{16}|[0-9]{16}|(\.[\w\-]+)*@([A-Za-z0-9-]+\.)+[A-Za-z]{2,4}' $OPTIONS |sed -E 's/\b\w+@/###  Email-Address  ### @/g' | sed -E 's/[0-9]{16}/#### 16 Digits ####/g' | sed -E 's/\"//g'"
+  cmd="python ./formatJson.py | grep -E '(?:[0-9]{1,3}\.){3}[0-9]{1,3}|[0-9]{16}|[0-9]{16}|(\.[\w\-]+)*@([A-Za-z0-9-]+\.)+[A-Za-z]{2,4}' $OPTIONS |sed -E 's/\b\w+@/###  Email-Address  ### @/g' | sed -E 's/[0-9]{16}/#### 16 Digits ####/g' | sed -E 's/\"//g'"
   entriesFound=`eval $cmd | wc -l`
   echo $entriesFound
  
@@ -78,8 +79,8 @@ do
      Status="Comply"
      Description="Healthy"
      Data=""
-     echo  curl -k  -X POST "$URL/publish/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$API_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "[ { \"Environment\": \"$1\", \"Tenant\": \"$appKey\", \"SnapshotType\": \"Mobile Records\", \"AuditTime\": \"$NOW\", \"Status\": \"$Status\", \"Description\": \"$Description\", \"SampleData\": \"$Data\" } ]"
-     curl -k  -X POST "$URL/publish/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$API_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "[ { \"Environment\": \"$1\", \"Tenant\": \"$appKey\", \"SnapshotType\": \"Mobile Records\", \"AuditTime\": \"$NOW\", \"Status\": \"$Status\", \"Description\": \"$Description\", \"SampleData\": \"$Data\" } ]"
+     echo  curl -k -v -X POST "$eventsURL/events/publish/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$API_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "[ { \"Environment\": \"$1\", \"Tenant\": \"$appKey\", \"SnapshotType\": \"Mobile Records\", \"AuditTime\": \"$NOW\", \"Status\": \"$Status\", \"Description\": \"$Description\", \"SampleData\": \"$Data\" } ]"
+     curl -k -v -X POST "$eventsURL/events/publish/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$API_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "[ { \"Environment\": \"$1\", \"Tenant\": \"$appKey\", \"SnapshotType\": \"Mobile Records\", \"AuditTime\": \"$NOW\", \"Status\": \"$Status\", \"Description\": \"$Description\", \"SampleData\": \"$Data\" } ]"
   else
      echo "Potential issues requiring further investigation:"
      echo "================================================"
@@ -89,8 +90,8 @@ do
      #Data="'"`eval $cmd | sort -u | tr '\n' ';'`"'" | sed -e 's/\"//g'
      Data="'"`eval $cmd | sort -u | tr '\n' ';'`"'"
      #echo $Data
-     echo curl -k  -X POST "$URL/publish/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$API_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "[ { \"Environment\": \"$1\", \"Tenant\": \"$appKey\", \"SnapshotType\": \"Mobile Records\", \"AuditTime\": \"$NOW\", \"Status\": \"$Status\", \"Description\": \"$Description\", \"SampleData\": \"$Data\" } ]"
-     curl -k  -X POST "$URL/publish/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$API_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "[ { \"Environment\": \"$1\", \"Tenant\": \"$appKey\", \"SnapshotType\": \"Mobile Records\", \"AuditTime\": \"$NOW\", \"Status\": \"$Status\", \"Description\": \"$Description\", \"SampleData\": \"$Data\" } ]"
+     echo curl -k -v -X POST "$eventsURL/events/publish/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$API_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "[ { \"Environment\": \"$1\", \"Tenant\": \"$appKey\", \"SnapshotType\": \"Mobile Records\", \"AuditTime\": \"$NOW\", \"Status\": \"$Status\", \"Description\": \"$Description\", \"SampleData\": \"$Data\" } ]"
+     curl -k -v -X POST "$eventsURL/events/publish/INTERNAL_AUDITS" -H"X-Events-API-AccountName:$API_ACCOUNT" -H"X-Events-API-Key:$API_KEY" -H"Content-type: application/vnd.appd.events+json;v=2" -d "[ { \"Environment\": \"$1\", \"Tenant\": \"$appKey\", \"SnapshotType\": \"Mobile Records\", \"AuditTime\": \"$NOW\", \"Status\": \"$Status\", \"Description\": \"$Description\", \"SampleData\": \"$Data\" } ]"
   fi
 
  
